@@ -72,6 +72,14 @@ if errorlevel 1 exit /b 1
 python -m pip install --upgrade pip
 if errorlevel 1 exit /b 1
 
+python -c "import pathlib, shutil, sys; free = shutil.disk_usage(pathlib.Path(r'%REPO_DIR%')).free; needed = 20 * 1024**3; sys.exit(0 if free >= needed else 1)"
+if errorlevel 1 (
+  echo Not enough free disk space on the install drive.
+  echo MOSS-Audio needs at least 20 GB free before runtime installation.
+  echo Free up space on this drive and rerun the installer.
+  exit /b 1
+)
+
 if exist "%FFMPEG_BIN%\ffmpeg.exe" (
   echo Portable ffmpeg already installed.
 ) else (
