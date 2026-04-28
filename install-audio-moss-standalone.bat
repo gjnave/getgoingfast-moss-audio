@@ -41,8 +41,8 @@ if errorlevel 1 (
 )
 
 if not exist "%REPO_DIR%\.git" (
-  echo Cloning MOSS-Audio...
-  git clone https://github.com/OpenMOSS/MOSS-Audio.git "%REPO_DIR%"
+  echo Cloning Get Going Fast source...
+  git clone https://github.com/gjnave/getgoingfast-moss-audio-source.git "%REPO_DIR%"
   if errorlevel 1 exit /b 1
 )
 
